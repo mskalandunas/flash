@@ -9,7 +9,15 @@ A flash card app
 - A card can be marked "unanswered"
 - A user can shuffle a deck of flash cards
 - App should be usable through a variety of interfaces
+  - CLI
+  - Web UI
+  - Endpoint?
+
+### Stretch goals
+- A user can add a deck
+- An added deck persists
 
 ## Tech requirements
 - Prettier
 - Linting
+- TS
