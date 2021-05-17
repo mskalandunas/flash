@@ -1,0 +1,1 @@
+export { fetchRegistry } from './registry';

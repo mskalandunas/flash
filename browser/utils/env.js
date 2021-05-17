@@ -1,0 +1,1 @@
+export const getRegistry = () => process.env.REGISTRY;
