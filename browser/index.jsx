@@ -2,11 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import { getRegistry } from './utils';
-import { Model } from './Model';
+import { Application } from './components';
 
 render(
-  <Model registryAddress={getRegistry()}>
-    <h1>Hello world</h1>
-  </Model>,
+  <Application registryAddress={getRegistry()} />,
   document.getElementById('ReactApplicationRoot')
 );

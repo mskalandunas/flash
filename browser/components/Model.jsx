@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { applyPropsToChildren } from './utils';
-import { batchFetchDecks } from './api';
+import { applyPropsToChildren } from '../utils';
+import { batchFetchDecks } from '../api';
 
 export class Model extends React.Component {
   constructor() {
