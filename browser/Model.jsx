@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { fetchRegistry } from './api';
+import { batchFetchDecks } from './api';
 
 export class Model extends React.Component {
   constructor() {
@@ -13,7 +13,7 @@ export class Model extends React.Component {
   }
 
   componentDidMount() {
-    fetchRegistry({
+    batchFetchDecks({
       url: this.props.registryAddress,
       success: console.log
     });

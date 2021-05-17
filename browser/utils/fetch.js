@@ -1,4 +1,4 @@
-import { noop } from '../utils';
+export const wrapURLs = urls => urls.map(url => fetch(url).then(response => response.json()));
 
 export const fetchData = ({ fail = noop, success = noop, options = {}, url }) => {
   return fetch(url, options)

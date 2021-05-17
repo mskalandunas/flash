@@ -1,1 +1,1 @@
-export { fetchRegistry } from './registry';
+export { batchFetchDecks } from './registry';
