@@ -1,12 +1,16 @@
 import React from 'react';
 
+import { ApplicationView } from './ApplicationView';
+
 export const Switch = props => {
+  const { decks, loading } = props;
+
   switch (true) {
-    case props.loading:
+    case loading:
       return <h1>Loading</h1>;
-    case !props.decks.length:
+    case !decks.length:
       return <h1>Empty State</h1>
     default:
-      return null;
+      return <ApplicationView decks={decks} />;
   }
 };
