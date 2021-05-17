@@ -41,7 +41,7 @@ export class Model extends React.Component {
   render() {
     return React.Children.map(
       this.props.children,
-      applyPropsToChildren({}, this.state)
+      applyPropsToChildren(this.state)
     );
   }
 }
