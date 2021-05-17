@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { applyPropsToChildren } from './utils';
 import { batchFetchDecks } from './api';
 
 export class Model extends React.Component {
@@ -8,20 +9,39 @@ export class Model extends React.Component {
     super();
 
     this.state = {
-      decks: []
+      decks: [],
+      loading: false
     };
+
+    this._applyDataToState = this._applyDataToState.bind(this);
   }
 
-  componentDidMount() {
+  _applyDataToState(data) {
+    this.setState(() => ({
+      decks: data,
+      loading: false
+    }));
+  }
+
+  _fetchData() {
     batchFetchDecks({
       url: this.props.registryAddress,
-      success: console.log
+      success: this._applyDataToState
     });
   }
 
+  _requestWrapper(fn) {
+    this.setState(() => ({ loading: true }), fn);
+  }
+
+  componentDidMount() {
+    this._requestWrapper(this._fetchData);
+  }
+
   render() {
-    return (
-      <h1>Hello world</h1>
+    return React.Children.map(
+      this.props.children,
+      applyPropsToChildren({}, this.state)
     );
   }
 }
