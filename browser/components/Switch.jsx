@@ -17,7 +17,12 @@ export const Switch = props => {
   }
 };
 
+Switch.defaultProps = {
+  decks: [],
+  loading: false
+};
+
 Switch.propTypes = {
-  decks: PropTypes.arrayOf(Deck.propTypes).isRequired,
-  loading: PropTypes.bool.isRequired
+  decks: PropTypes.arrayOf(PropTypes.shape(Deck.propTypes)),
+  loading: PropTypes.bool
 };

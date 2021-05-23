@@ -1,21 +1,42 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Card } from './Card';
+
 export class Deck extends React.Component {
-  reset() {}
+  constructor() {
+    super();
+  }
+
+  renderCard(card, i) {
+    return (
+      <li key={card.title + '_' + i}>
+        <Card {...card} />
+      </li>
+    );
+  }
+
+  reset() {
+
+  }
   
-  shuffle() {}
+  shuffle() {
+
+  }
 
   render() {
-    return (
-      <h1>{this.props.name}</h1>
-    );
+    return [
+      <h1>{this.props.name}</h1>,
+      <ul>
+        {this.props.cards.map(this.renderCard)}
+      </ul>
+    ];
   }
 }
 
 Deck.propTypes = {
   canonicalName: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(PropTypes.shape({
+  cards: PropTypes.arrayOf(PropTypes.shape({
     body: PropTypes.string.isRequired,
     content: PropTypes.string,
     title: PropTypes.string.isRequired,

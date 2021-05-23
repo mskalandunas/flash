@@ -1,7 +1,7 @@
 export const transformDeck = ({  data, meta }) => {
   return {
     canonicalName: meta.canonical_name,
-    data,
+    cards: data,
     description: meta.description,
     name: meta.name
   };
