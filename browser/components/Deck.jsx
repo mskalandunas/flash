@@ -35,6 +35,12 @@ export class Deck extends React.Component {
   render() {
     return [
       <h1>{this.props.name}</h1>,
+      <table>
+        <tr>
+          {ACTIONS.map(action => <th key={action.type}>{action.display}</th>)}
+          <th>Incomplete</th>
+        </tr>
+      </table>,
       <ul>
         {this.props.cards.map(this.renderCard)}
       </ul>
