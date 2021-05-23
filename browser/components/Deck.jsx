@@ -9,6 +9,9 @@ export class Deck extends React.Component {
     super();
 
     this.state = this._createInitialState(ACTIONS);
+    
+    this.cardActionHandler = this.cardActionHandler.bind(this);
+    this.renderCard = this.renderCard.bind(this);
   }
 
   cardActionHandler(type, id) {
@@ -24,7 +27,7 @@ export class Deck extends React.Component {
   renderCard(card, i) {
     return (
       <li key={card.title + '_' + i}>
-        <Card {...card} handleAction={this.cardActionHandler} />
+        <Card {...card} handleClick={this.cardActionHandler} />
       </li>
     );
   }

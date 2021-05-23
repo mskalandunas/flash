@@ -4,6 +4,12 @@ import React from 'react';
 import { ACTIONS } from '../constants';
 
 export class Card extends React.Component {
+  constructor() {
+    super();
+
+    this.renderActions = this.renderActions.bind(this);
+  }
+
   renderActions(action, i) {
     const { handleClick, id } = this.props;
 
@@ -24,7 +30,9 @@ export class Card extends React.Component {
         <h2>{title}</h2>
         <p>{body}</p>
         {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
-        {ACTIONS.map(this.renderActions)}
+        <ul>
+          {ACTIONS.map(this.renderActions)}
+        </ul>
       </div>);
   }
 };
