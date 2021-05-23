@@ -1,4 +1,4 @@
-const ACTIONS = [
+export const ACTIONS = [
   {
     display: 'Correct',
     type: 'correct'

@@ -1,27 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { ACTIONS } from '../constants';
 import { Card } from './Card';
 
 export class Deck extends React.Component {
   constructor() {
     super();
+
+    this.state = this._createInitialState(ACTIONS);
   }
 
+  cardActionHandler(type, id) {
+    this.setState(state => ({
+      [type]: [...state[type], id]
+    }));
+  }
+
+  _createInitialState() {
+    return ACTIONS.reduce((state, action) => (state[action.type] = []) && state, {});
+  }
+  
   renderCard(card, i) {
     return (
       <li key={card.title + '_' + i}>
-        <Card {...card} />
+        <Card {...card} handleAction={this.cardActionHandler} />
       </li>
     );
-  }
-
-  reset() {
-
-  }
-  
-  shuffle() {
-
   }
 
   render() {
