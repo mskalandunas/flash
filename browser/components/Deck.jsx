@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export class Deck extends React.Component {
@@ -11,3 +12,14 @@ export class Deck extends React.Component {
     );
   }
 }
+
+Deck.propTypes = {
+  canonicalName: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    body: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    title: PropTypes.string.isRequired,
+  })).isRequired,
+  description: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+};

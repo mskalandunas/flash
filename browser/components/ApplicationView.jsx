@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+
 import { Deck } from './Deck';
 
 export class ApplicationView extends React.Component {
@@ -12,3 +14,7 @@ export class ApplicationView extends React.Component {
     );
   }
 }
+
+ApplicationView.propTypes = {
+  decks: PropTypes.arrayOf(Deck.propTypes).isRequired
+};

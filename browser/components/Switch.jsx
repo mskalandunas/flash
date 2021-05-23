@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { ApplicationView } from './ApplicationView';
+import { Deck } from './Deck';
 
 export const Switch = props => {
   const { decks, loading } = props;
@@ -13,4 +15,9 @@ export const Switch = props => {
     default:
       return <ApplicationView decks={decks} />;
   }
+};
+
+Switch.propTypes = {
+  decks: PropTypes.arrayOf(Deck.propTypes).isRequired,
+  loading: PropTypes.bool.isRequired
 };

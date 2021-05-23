@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { ACTIONS } from '../constants';
@@ -12,4 +13,9 @@ export const Card = props => {
       </button>
     );
   });
+};
+
+Card.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
