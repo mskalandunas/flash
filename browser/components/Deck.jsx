@@ -10,8 +10,8 @@ export class Deck extends React.Component {
 
     this.state = this._createInitialState(ACTIONS);
     
+    this._renderCard = this._renderCard.bind(this);
     this.cardActionHandler = this.cardActionHandler.bind(this);
-    this.renderCard = this.renderCard.bind(this);
   }
 
   cardActionHandler(type, id) {
@@ -23,8 +23,33 @@ export class Deck extends React.Component {
   _createInitialState() {
     return ACTIONS.reduce((state, action) => (state[action.type] = []) && state, {});
   }
+
+  _createTableRows() {
+    return this.state[this._findLargestType()].map((_, i) => {
+      return (
+        <tr key={'tr_' + i}>
+          {Object.keys(this.state).map(key => {
+            return (
+              <td key={'td_' + key + '_' + i}>{this.state[key][i]}</td>
+            )
+          })}
+        </tr>
+      )
+    });
+  }
+
+  _findLargestType() {
+    const lengthToType = ACTIONS.reduce(
+      (types, action) => {
+        return (types[this.state[action.type].length] = action.type) && types
+      },
+    {});
+    const highestCount = Math.max(...Object.keys(lengthToType).map(key => +key));
+
+    return lengthToType[highestCount];
+  }
   
-  renderCard(card, i) {
+  _renderCard(card, i) {
     return (
       <li key={card.title + '_' + i}>
         <Card {...card} handleClick={this.cardActionHandler} />
@@ -36,13 +61,18 @@ export class Deck extends React.Component {
     return [
       <h1>{this.props.name}</h1>,
       <table>
-        <tr>
-          {ACTIONS.map(action => <th key={action.type}>{action.display}</th>)}
-          <th>Incomplete</th>
-        </tr>
+        <thead>
+          <tr>
+            {ACTIONS.map(action => <th key={action.type}>{action.display}</th>)}
+            <th>Incomplete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this._createTableRows()}
+        </tbody>
       </table>,
       <ul>
-        {this.props.cards.map(this.renderCard)}
+        {this.props.cards.map(this._renderCard)}
       </ul>
     ];
   }
