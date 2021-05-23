@@ -1,9 +1,14 @@
 import React from 'react';
+import { Deck } from './Deck';
 
 export class ApplicationView extends React.Component {
   render() {
     return (
-      <h1>Placeholder View Text</h1>
+      <div>
+        {this.props.decks.map(deck => {
+          return <Deck key={deck.canonicalName} {...deck} />
+        })}
+      </div>
     );
   }
 }

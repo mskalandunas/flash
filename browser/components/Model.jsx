@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { applyPropsToChildren } from '../utils';
-import { batchFetchDecks } from '../api';
+import { batchFetchDecks, transformDeck } from '../api';
 
 export class Model extends React.Component {
   constructor() {
@@ -18,7 +18,7 @@ export class Model extends React.Component {
 
   _applyDataToState(data) {
     this.setState(() => ({
-      decks: data,
+      decks: data.map(transformDeck),
       loading: false
     }));
   }
