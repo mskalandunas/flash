@@ -1,25 +1,27 @@
 {
   "name": "flash",
-  "version": "0.0.0",
-  "description": "Flash card app",
+  "version": "1.0.0",
+  "description": "A flash card app",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build:dev": "parcel -p 3000 watch browser/index.html",
-    "test": "jest --config=jest.config.js"
+    "start": "webpack"
   },
-  "author": "Mike Skalandunas <mskalandunas@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/preset-env": "^7.12.11",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3",
-    "parcel-bundler": "^1.12.5"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "html-webpack-plugin": "^5.6.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
