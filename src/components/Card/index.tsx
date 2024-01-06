@@ -1,8 +1,8 @@
-import React from 'react';
-import { Card as TCard } from './Card';
-import { useLocalizationContext } from '../../context';
+import React from "react";
+import { Card as TCard } from "./Card";
+import { useLocalizationContext } from "../../context";
 
-export const Card: TCard = ({ answer, question, tags }) => {
+export const Card: TCard = ({ answer, question }) => {
   const { answerText, questionText } = useLocalizationContext().CARD;
 
   return (
